@@ -1,0 +1,70 @@
+<componentreference-bundle-doc data-data-rendering-service-uid="19" data-aura-rendered-by="65:0" componentreference-bundledoc_bundledoc-host=""><componentreference-code-highlighter componentreference-bundledoc_bundledoc="" componentreference-codehighlighter_codehighlighter-host=""><div componentreference-codehighlighter_codehighlighter=""><slot componentreference-codehighlighter_codehighlighter=""><div componentreference-bundledoc_bundledoc="" class="slds-text-longform slds-p-bottom_x-small slds-p-right_x-small bundle-documentation"><div componentreference-bundledoc_bundledoc=""><p componentreference-bundledoc_bundledoc="">The <code componentreference-bundledoc_bundledoc="">lightning/pageReferenceUtils</code> module provides utilities for encoding and decoding default field values. Pass this string into the <code componentreference-bundledoc_bundledoc="">pageReference.state.defaultFieldValues</code> attribute on <code componentreference-bundledoc_bundledoc="">standard__objectPage</code> page reference types. This module is supported only in Lightning Experience in all editions. This module is not supported in Lightning Out, Lightning communities, or the Salesforce mobile app. This module requires API version 48.0 or later.</p> 
+<p componentreference-bundledoc_bundledoc="">In a module's Javascript file, import <code componentreference-bundledoc_bundledoc="">encodeDefaultFieldValues()</code> or <code componentreference-bundledoc_bundledoc="">decodeDefaultFieldValues()</code> from <code componentreference-bundledoc_bundledoc="">lightning/pageReferenceUtils</code> using this syntax.</p> 
+<pre componentreference-bundledoc_bundledoc="" class=" language-javascript" componentreference-codehighlighter_codehighlighter=""><code class=" language-javascript" componentreference-bundledoc_bundledoc="" componentreference-codehighlighter_codehighlighter=""><span class="token keyword" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">import</span> <span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">{</span> encodeDefaultFieldValues <span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">}</span> <span class="token keyword" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">from</span> <span class="token string" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">'lightning/pageReferenceUtils'</span><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">;</span>
+</code></pre> 
+<h4 componentreference-bundledoc_bundledoc="">Methods</h4> 
+<p componentreference-bundledoc_bundledoc=""><strong componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">encodeDefaultFieldValues</code></strong></p> 
+<p componentreference-bundledoc_bundledoc="">Encodes default field values from a JavaScript object into a serialized string.</p> 
+<table componentreference-bundledoc_bundledoc=""> 
+ <thead componentreference-bundledoc_bundledoc=""> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <th componentreference-bundledoc_bundledoc="">Parameter</th> 
+   <th componentreference-bundledoc_bundledoc="">Type</th> 
+   <th componentreference-bundledoc_bundledoc="">Description</th> 
+  </tr> 
+ </thead> 
+ <tbody componentreference-bundledoc_bundledoc=""> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <td componentreference-bundledoc_bundledoc="">defaultFieldValues</td> 
+   <td componentreference-bundledoc_bundledoc="">object</td> 
+   <td componentreference-bundledoc_bundledoc="">List of default key-value pairs for the default field values you are passing.</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p componentreference-bundledoc_bundledoc=""><strong componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">decodeDefaultFieldValues</code></strong></p> 
+<p componentreference-bundledoc_bundledoc="">Decodes default field values from a serialized string into a standard object. Use this method when overriding a standard action only.</p> 
+<table componentreference-bundledoc_bundledoc=""> 
+ <thead componentreference-bundledoc_bundledoc=""> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <th componentreference-bundledoc_bundledoc="">Parameter</th> 
+   <th componentreference-bundledoc_bundledoc="">Type</th> 
+   <th componentreference-bundledoc_bundledoc="">Description</th> 
+  </tr> 
+ </thead> 
+ <tbody componentreference-bundledoc_bundledoc=""> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <td componentreference-bundledoc_bundledoc="">encodedDefaultFieldValuesString</td> 
+   <td componentreference-bundledoc_bundledoc="">string</td> 
+   <td componentreference-bundledoc_bundledoc="">Encoded string of default field values. The values returned by this method are strings. Field type isn't preserved.</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<h4 componentreference-bundledoc_bundledoc="">Usage</h4> 
+<p componentreference-bundledoc_bundledoc="">The key-value pairs of an object are encoded into a serialized string that you pass into the <code componentreference-bundledoc_bundledoc="">pageReference.state.defaultFieldValues</code> property.</p> 
+<p componentreference-bundledoc_bundledoc="">These objects are not supported by <code componentreference-bundledoc_bundledoc="">lightning/pageReferenceUtils</code>:</p> 
+<ul componentreference-bundledoc_bundledoc=""> 
+ <li componentreference-bundledoc_bundledoc="">ContractLineItem</li> 
+ <li componentreference-bundledoc_bundledoc="">OpportunityLineItem</li> 
+ <li componentreference-bundledoc_bundledoc="">OrderItem</li> 
+ <li componentreference-bundledoc_bundledoc="">QuoteLineItem</li> 
+ <li componentreference-bundledoc_bundledoc="">WorkOrderLineItem</li> 
+</ul> 
+<p componentreference-bundledoc_bundledoc="">Passing the <code componentreference-bundledoc_bundledoc="">recordTypeId</code> to <code componentreference-bundledoc_bundledoc="">defaultFieldValues</code> is not yet supported. The <code componentreference-bundledoc_bundledoc="">recordTypeId</code> influences routing behavior, layout assignment, and page assignment, so you can see unexpected results if you try to use it.</p> 
+<p componentreference-bundledoc_bundledoc="">You can specify values for fields even if they’re not available in the create record form.</p> 
+<ul componentreference-bundledoc_bundledoc=""> 
+ <li componentreference-bundledoc_bundledoc="">If the field is hidden because it’s not on the page layout, the value specified in <code componentreference-bundledoc_bundledoc="">defaultFieldValues</code> is saved with the new record.</li> 
+ <li componentreference-bundledoc_bundledoc="">If the current user doesn’t have create access to the field, due to field-level security, attempts to save the new record result in an error.</li> 
+</ul> 
+<p componentreference-bundledoc_bundledoc="">Error messages can’t reference fields that the current user doesn’t have access to. This constraint means the user won’t know why the error occurred or how to resolve the issue. It’s essential to perform access checks in your own code before firing the event.</p> 
+<p componentreference-bundledoc_bundledoc="">You can’t prepopulate system-maintained fields, such as Id or record modification time stamps. Default values for these fields are silently ignored.</p> 
+<p componentreference-bundledoc_bundledoc="">Prepopulating rich text fields is unsupported.</p> 
+<p componentreference-bundledoc_bundledoc="">Date and time field values must use the ISO 8601 format. For example:</p> 
+<ul componentreference-bundledoc_bundledoc=""> 
+ <li componentreference-bundledoc_bundledoc="">Date: 2017-07-18</li> 
+ <li componentreference-bundledoc_bundledoc="">Datetime: 2017-07-18T03:00:00Z</li> 
+</ul> 
+<p componentreference-bundledoc_bundledoc="">While the create record page presents <code componentreference-bundledoc_bundledoc="">datetime</code> values in the user’s local time, you must convert <code componentreference-bundledoc_bundledoc="">datetime</code> values to UTC to prepopulate the field.</p> 
+<h4 componentreference-bundledoc_bundledoc="">See Also</h4> 
+<ul componentreference-bundledoc_bundledoc=""> 
+ <li componentreference-bundledoc_bundledoc=""><a href="docs/component-library/documentation/lwc/lwc.use_navigate_dfv" rel="nofollow" componentreference-bundledoc_bundledoc="">Navigate to a Record Create Page with Default Field Values</a></li> 
+</ul></div></div></slot></div></componentreference-code-highlighter></componentreference-bundle-doc><span style="display:none" data-aura-rendered-by="56:0">Documentation</span>

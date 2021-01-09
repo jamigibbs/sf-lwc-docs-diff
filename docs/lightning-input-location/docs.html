@@ -1,0 +1,69 @@
+<componentreference-bundle-doc data-data-rendering-service-uid="20" data-aura-rendered-by="72:0" componentreference-bundledoc_bundledoc-host=""><componentreference-code-highlighter componentreference-bundledoc_bundledoc="" componentreference-codehighlighter_codehighlighter-host=""><div componentreference-codehighlighter_codehighlighter=""><slot componentreference-codehighlighter_codehighlighter=""><div componentreference-bundledoc_bundledoc="" class="slds-text-longform slds-p-bottom_x-small slds-p-right_x-small bundle-documentation"><div componentreference-bundledoc_bundledoc=""><p componentreference-bundledoc_bundledoc="">A <code componentreference-bundledoc_bundledoc="">lightning-input-location</code> component represents a geolocation compound field that accepts user input for a latitude and longitude value. Latitude and longitude are geographic coordinates specified in decimal degrees. The geolocation compound field allows you to identify locations by their latitude and longitude. The latitude field accepts values within -90 and 90, and the longitude field accepts values within -180 and 180. An error message is displayed when you enter a value outside of the accepted range.</p> 
+<p componentreference-bundledoc_bundledoc="">Here are a few examples of latitudes: -30, 45, 37.12345678, -10.0. Values such as 90.5 or -90.5 are not valid latitudes.</p> 
+<p componentreference-bundledoc_bundledoc="">Here are a few examples of longitudes: -100, -120.9762, 115.84. Values such as 180.5 or -180.5 are not valid longitudes.</p> 
+<p componentreference-bundledoc_bundledoc="">This example displays a geolocation compound field with a latitude of 37.7938460 and a longitude of -122.3948370.</p> 
+<pre componentreference-bundledoc_bundledoc="" class=" language-html" componentreference-codehighlighter_codehighlighter=""><code class=" language-html" componentreference-bundledoc_bundledoc="" componentreference-codehighlighter_codehighlighter=""><span class="token tag" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token tag" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">&lt;</span>template</span><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">&gt;</span></span>
+        <span class="token tag" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token tag" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">&lt;</span>lightning-input-location</span>
+                <span class="token attr-name" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">label</span><span class="token attr-value" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">=</span><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">"</span>My Coordinates<span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">"</span></span>
+                <span class="token attr-name" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">latitude</span><span class="token attr-value" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">=</span><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">"</span>37.7938460<span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">"</span></span>
+                <span class="token attr-name" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">longitude</span><span class="token attr-value" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">=</span><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">"</span>-122.3948370<span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">"</span></span><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">&gt;</span></span>
+        <span class="token tag" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token tag" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">&lt;/</span>lightning-input-location</span><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">&gt;</span></span>
+<span class="token tag" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token tag" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc=""><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">&lt;/</span>template</span><span class="token punctuation" componentreference-codehighlighter_codehighlighter="" componentreference-bundledoc_bundledoc="">&gt;</span></span>
+</code></pre> 
+<h4 componentreference-bundledoc_bundledoc="">Input Validation</h4> 
+<p componentreference-bundledoc_bundledoc="">Client-side input validation is available for this component. You can require the user to make a selection by including the <code componentreference-bundledoc_bundledoc="">required</code> attribute. An error message is automatically displayed when a user interacts with the field but leaves it empty.</p> 
+<p componentreference-bundledoc_bundledoc="">To check the validity states of an input, use the <code componentreference-bundledoc_bundledoc="">validity</code> attribute, which is based on the <code componentreference-bundledoc_bundledoc="">ValidityState</code> object. You can access the validity states in your JavaScript. This <code componentreference-bundledoc_bundledoc="">validity</code> attribute returns an object with <code componentreference-bundledoc_bundledoc="">boolean</code> properties. For more information, see the <a href="bundle/lightning-input/documentation" rel="nofollow" componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">lightning-input</code></a> documentation.</p> 
+<h4 componentreference-bundledoc_bundledoc="">Custom Events</h4> 
+<p componentreference-bundledoc_bundledoc=""><strong componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">change</code></strong></p> 
+<p componentreference-bundledoc_bundledoc="">The event fired when a value is changed in the <code componentreference-bundledoc_bundledoc="">lightning-input-location</code> component.</p> 
+<p componentreference-bundledoc_bundledoc="">The <code componentreference-bundledoc_bundledoc="">change</code> event returns the following parameters.</p> 
+<table componentreference-bundledoc_bundledoc=""> 
+ <thead componentreference-bundledoc_bundledoc=""> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <th componentreference-bundledoc_bundledoc="">Parameter</th> 
+   <th componentreference-bundledoc_bundledoc="">Type</th> 
+   <th componentreference-bundledoc_bundledoc="">Description</th> 
+  </tr> 
+ </thead> 
+ <tbody componentreference-bundledoc_bundledoc=""> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <td componentreference-bundledoc_bundledoc="">latitude</td> 
+   <td componentreference-bundledoc_bundledoc="">string</td> 
+   <td componentreference-bundledoc_bundledoc="">The latitude of the location.</td> 
+  </tr> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <td componentreference-bundledoc_bundledoc="">longitude</td> 
+   <td componentreference-bundledoc_bundledoc="">string</td> 
+   <td componentreference-bundledoc_bundledoc="">The longitude of the location.</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<p componentreference-bundledoc_bundledoc="">The <code componentreference-bundledoc_bundledoc="">change</code> event properties are as follows.</p> 
+<table componentreference-bundledoc_bundledoc=""> 
+ <thead componentreference-bundledoc_bundledoc=""> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <th componentreference-bundledoc_bundledoc="">Property</th> 
+   <th componentreference-bundledoc_bundledoc="">Value</th> 
+   <th componentreference-bundledoc_bundledoc="">Description</th> 
+  </tr> 
+ </thead> 
+ <tbody componentreference-bundledoc_bundledoc=""> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <td componentreference-bundledoc_bundledoc="">bubbles</td> 
+   <td componentreference-bundledoc_bundledoc="">true</td> 
+   <td componentreference-bundledoc_bundledoc="">This event bubbles up through the DOM.</td> 
+  </tr> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <td componentreference-bundledoc_bundledoc="">cancelable</td> 
+   <td componentreference-bundledoc_bundledoc="">false</td> 
+   <td componentreference-bundledoc_bundledoc="">This event has no default behavior that can be canceled. You can't call <code componentreference-bundledoc_bundledoc="">preventDefault()</code> on this event.</td> 
+  </tr> 
+  <tr componentreference-bundledoc_bundledoc=""> 
+   <td componentreference-bundledoc_bundledoc="">composed</td> 
+   <td componentreference-bundledoc_bundledoc="">true</td> 
+   <td componentreference-bundledoc_bundledoc="">This event propagates outside of the component in which it was dispatched.</td> 
+  </tr> 
+ </tbody> 
+</table> 
+<h4 componentreference-bundledoc_bundledoc="">Source Code</h4> 
+<p componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">lightning-input-location</code> is available in the <a href="https://github.com/salesforce/base-components-recipes#documentation" rel="nofollow" componentreference-bundledoc_bundledoc="">Base Components Recipes GitHub repository</a>. It's transpiled into the <code componentreference-bundledoc_bundledoc="">c</code> namespace so that you can use it in your own projects.</p></div></div></slot></div></componentreference-code-highlighter></componentreference-bundle-doc><span style="display:none" data-aura-rendered-by="63:0">Documentation</span>
