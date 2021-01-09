@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const { urls } = require('./paths')
 
-// Get Docs
 puppeteer
   .launch()
   .then(async browser => {
@@ -51,8 +50,6 @@ puppeteer
       const specsHtml = await page.evaluate(() => document.querySelector('#specification').innerHTML);
       console.log(`got the ${urls[i].name} specs page html`);
 
-      // const name = urls[i].name;
-      // const baseDir = path.join(__dirname, `/./docs/${name}/`);
       const specsFileName = 'specs.html'
 
       fs.writeFile(`${baseDir}${specsFileName}`, specsHtml, 'utf8', function (err) {
@@ -62,6 +59,7 @@ puppeteer
     }
 
     await browser.close();
+
     console.log('*doc page browser closed*');
     console.timeEnd('pagefetch');
   })
