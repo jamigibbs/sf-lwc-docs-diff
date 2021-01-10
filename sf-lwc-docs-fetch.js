@@ -3,6 +3,7 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const simpleGit = require('simple-git');
 const git = simpleGit();
+const simpleGitPromise = require('simple-git/promise')();
 const path = require('path');
 const { urls } = require('./paths')
 
@@ -103,31 +104,31 @@ function handleGitCommit(){
   git.addConfig('user.email', AUTHOR_EMAIL);
   git.addConfig('user.name', AUTHOR_NAME);
 
-  git.init(onInit).addRemote('origin', githubUrl, onRemoteAdd);
+  git.init(onInit).addRemote('origin', githubUrl, () => {
+      // Add all changed doc files for commit.
+    simpleGitPromise.add('.')
+      .then((addSuccess) => {
+        console.log('added files ', addSuccess);
+      }, (err) => {
+        console.log('adding files failed ', err);
+      });
 
-  // Add all changed doc files for commit.
-  git.add('.')
-    .then((addSuccess) => {
-      console.log('added files ', addSuccess);
-    }, (err) => {
-      console.log('adding files failed ', err);
-    });
+    // Commit files.
+    simpleGitPromise.commit(commitMessage)
+      .then((successCommit) => {
+        console.log('files successfully committed ', successCommit);
+      }, (err) => {
+        console.log('failed commmit ', err);
+      });
 
-  // Commit files.
-  git.commit(commitMessage)
-    .then((successCommit) => {
-      console.log('files successfully committed ', successCommit);
-    }, (err) => {
-      console.log('failed commmit ', err);
-    });
-
-  // Push to repo.
-  git.push('origin', GIT_BRANCH)
-    .then((success) => {
-      console.log('repo successfully pushed ', success);
-    }, (err) => {
-      console.log('repo push failed ', err);
-    });
+    // Push to repo.
+    simpleGitPromise.push('origin', GIT_BRANCH)
+      .then((success) => {
+        console.log('repo successfully pushed ', success);
+      }, (err) => {
+        console.log('repo push failed ', err);
+      });
+  });
 }
 
 function generatePrettyDateTime(){
@@ -135,12 +136,7 @@ function generatePrettyDateTime(){
   return date.toLocaleDateString(); // -> "2/1/2021"
 }
 
-function onInit (err, initResult) { 
+function onInit (err, initResult) {
   if (err) console.log(err);
   console.log(initResult);
-}
-
-function onRemoteAdd (err, addRemoteResult) { 
-  if (err) console.log(err);
-  console.log(addRemoteResult);
 }
