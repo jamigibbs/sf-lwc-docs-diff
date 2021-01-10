@@ -9,7 +9,7 @@ const { urls } = require('./paths')
 dotenv.config();
 
 puppeteer
-  .launch()
+  .launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
   .then(async browser => {
     console.time('pagefetch');
 
