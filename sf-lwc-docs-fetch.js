@@ -105,7 +105,7 @@ function handleGitCommit(){
   // git.addConfig('user.email', AUTHOR_EMAIL);
   // git.addConfig('user.name', AUTHOR_NAME);
 
-  git.init(onInit)
+  git.init()
     .addConfig('user.email', AUTHOR_EMAIL)
     .addConfig('user.name', AUTHOR_NAME)
     .addRemote('origin', githubUrl)
@@ -114,6 +114,7 @@ function handleGitCommit(){
     .add('.')
     .commit(commitMessage)
     .push('origin', GIT_DIFF_BRANCH)
+    .catch(handleGitCatch)
 }
 
 function generatePrettyDateTime(){
@@ -121,7 +122,12 @@ function generatePrettyDateTime(){
   return date.toLocaleDateString(); // -> "2/1/2021"
 }
 
-function onInit (err, initResult) {
-  if (err) console.log(err);
-  console.log(initResult);
+function onInit (err, result) {
+  if (err) console.log('git catch', err);
+  console.log('git init res', result);
+}
+
+function handleGitCatch (err, result) {
+  if (err) console.log('git catch err', err);
+  console.log('git catch res', result);
 }
