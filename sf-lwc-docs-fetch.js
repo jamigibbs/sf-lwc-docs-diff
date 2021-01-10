@@ -91,7 +91,7 @@ puppeteer
 
 function handleGitCommit(){
   const GIT_REPO = 'sf-lwc-docs-diff';
-  const GIT_BRANCH = 'site-diffs';
+  const GIT_DIFF_BRANCH = 'site-diffs';
   const GIT_USERNAME = process.env.GIT_USERNAME;
   const GIT_PASSWORD = process.env.GIT_PASSWORD;
   const AUTHOR_NAME = process.env.npm_package_author_name;
@@ -102,46 +102,18 @@ function handleGitCommit(){
   const commitMessage = `${generatePrettyDateTime()} - Diff found`;
 
   // Add local git config
-  git.addConfig('user.email', AUTHOR_EMAIL);
-  git.addConfig('user.name', AUTHOR_NAME);
+  // git.addConfig('user.email', AUTHOR_EMAIL);
+  // git.addConfig('user.name', AUTHOR_NAME);
 
-  git.init(onInit).addRemote('origin', githubUrl).fetch();
-
-    // // clone into a new directory
-    // simpleGitPromise.clone(repoUrl, './temp/common');
-    // // change to that directory
-    // simpleGitPromise.cwd('./temp/common');
-
-  simpleGitPromise.checkout(GIT_BRANCH)
-    .then((success) => {
-      console.log(`checked out ${GIT_BRANCH} `, success);
-    }, (err) => {
-      console.log('checkout branch error ', err);
-    });
-
-    // Add all changed doc files for commit.
-  simpleGitPromise.add('.')
-    .then((success) => {
-      console.log('added files ', success);
-    }, (err) => {
-      console.log('adding files failed ', err);
-    });
-
-  // Commit files.
-  simpleGitPromise.commit(commitMessage)
-    .then((success) => {
-      console.log('files successfully committed ', success);
-    }, (err) => {
-      console.log('failed commmit ', err);
-    });
-
-  // Push to repo.
-  simpleGitPromise.push('origin', GIT_BRANCH)
-    .then((success) => {
-      console.log('repo successfully pushed ', success);
-    }, (err) => {
-      console.log('repo push failed ', err);
-    });
+  git.init(onInit)
+    .addConfig('user.email', AUTHOR_EMAIL)
+    .addConfig('user.name', AUTHOR_NAME)
+    .addRemote('origin', githubUrl)
+    .fetch()
+    .checkout(GIT_DIFF_BRANCH)
+    .add('.')
+    .commit(commitMessage)
+    .push('origin', GIT_DIFF_BRANCH)
 }
 
 function generatePrettyDateTime(){
