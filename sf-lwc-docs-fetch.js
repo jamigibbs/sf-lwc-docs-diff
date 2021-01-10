@@ -105,12 +105,11 @@ function handleGitCommit(){
   // git.addConfig('user.email', AUTHOR_EMAIL);
   // git.addConfig('user.name', AUTHOR_NAME);
 
-  git.init()
+  git.silent(true)
+    .clone(githubUrl)
     .addConfig('user.email', AUTHOR_EMAIL)
     .addConfig('user.name', AUTHOR_NAME)
-    .addRemote('origin', githubUrl)
-    .fetch()
-    .add('./*')
+    .add('.')
     .commit(commitMessage)
     .push('origin', 'main')
     .catch(handleGitCatch)
