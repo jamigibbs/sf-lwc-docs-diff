@@ -1,8 +1,8 @@
 const dotenv = require('dotenv');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
-const simpleGit = require('simple-git')();
-const simpleGitPromise = require('simple-git/promise')();
+const simpleGit = require('simple-git');
+const git = simpleGit();
 const path = require('path');
 const { urls } = require('./paths')
 
@@ -100,13 +100,13 @@ function handleGitCommit(){
   const commitMessage = `${generatePrettyDateTime()} - Diff found`;
 
   // Add local git config
-  simpleGit.addConfig('user.email', AUTHOR_EMAIL);
-  simpleGit.addConfig('user.name', AUTHOR_NAME);
+  git.addConfig('user.email', AUTHOR_EMAIL);
+  git.addConfig('user.name', AUTHOR_NAME);
 
-  simpleGitPromise.addRemote('origin', githubUrl);
+  git.init(onInit).addRemote('origin', githubUrl, onRemoteAdd);
 
   // Add all changed doc files for commit.
-  simpleGitPromise.add('.')
+  git.add('.')
     .then((addSuccess) => {
       console.log('added files ', addSuccess);
     }, (err) => {
@@ -114,7 +114,7 @@ function handleGitCommit(){
     });
 
   // Commit files.
-  simpleGitPromise.commit(commitMessage)
+  git.commit(commitMessage)
     .then((successCommit) => {
       console.log('files successfully committed ', successCommit);
     }, (err) => {
@@ -122,7 +122,7 @@ function handleGitCommit(){
     });
 
   // Push to repo.
-  simpleGitPromise.push('origin', GIT_BRANCH)
+  git.push('origin', GIT_BRANCH)
     .then((success) => {
       console.log('repo successfully pushed ', success);
     }, (err) => {
@@ -133,4 +133,14 @@ function handleGitCommit(){
 function generatePrettyDateTime(){
   let date = new Date();
   return date.toLocaleDateString(); // -> "2/1/2021"
+}
+
+function onInit (err, initResult) { 
+  if (err) console.log(err);
+  console.log(initResult);
+}
+
+function onRemoteAdd (err, addRemoteResult) { 
+  if (err) console.log(err);
+  console.log(addRemoteResult);
 }
