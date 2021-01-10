@@ -1,0 +1,30 @@
+{
+  "name": "sf-lwc-docs-diff",
+  "version": "1.0.0",
+  "description": "A small script that scrapes the Salesforce Lightning Web Component documentation and specs from the [Salesforce developer component reference](https://developer.salesforce.com/docs/component-library/overview/components) site so that we can diff previous versions of the components and therefore track updates that are not always publicing announced.",
+  "main": "sf-lwc-docs-fetch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sf-lwc-docs-fetch.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamigibbs/sf-lwc-docs-diff.git"
+  },
+  "author": {
+    "name": "Jami Gibbs",
+    "email": "jami0821@gmail.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamigibbs/sf-lwc-docs-diff/issues"
+  },
+  "homepage": "https://github.com/jamigibbs/sf-lwc-docs-diff#readme",
+  "devDependencies": {
+    "puppeteer": "^5.5.0",
+    "simple-git": "^2.31.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
