@@ -2,6 +2,10 @@
   "name": "sf-lwc-docs-diff",
   "version": "1.0.0",
   "description": "A small script that scrapes the Salesforce Lightning Web Component documentation and specs from the [Salesforce developer component reference](https://developer.salesforce.com/docs/component-library/overview/components) site so that we can diff previous versions of the components and therefore track updates that are not always publicing announced.",
+  "engines": {
+    "node": ">= 10.16.3",
+    "npm": ">= 6.9.0"
+  },
   "main": "sf-lwc-docs-fetch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
