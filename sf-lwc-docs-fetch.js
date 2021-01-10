@@ -97,6 +97,7 @@ function handleGitCommit(){
   const AUTHOR_NAME = process.env.npm_package_author_name;
   const AUTHOR_EMAIL = process.env.npm_package_author_email;
 
+  const repoUrl = 'https://github.com/jamigibbs/sf-lwc-docs-diff';
   const githubUrl = `https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/${GIT_REPO}`;
   const commitMessage = `${generatePrettyDateTime()} - Diff found`;
 
@@ -105,6 +106,11 @@ function handleGitCommit(){
   git.addConfig('user.name', AUTHOR_NAME);
 
   git.init(onInit).addRemote('origin', githubUrl, () => {
+
+    // clone into a new directory
+    simpleGitPromise.clone(repoUrl, './temp/common');
+    // change to that directory
+    simpleGitPromise.cwd('./temp/common');
 
     simpleGitPromise.checkout(GIT_BRANCH)
       .then((success) => {
