@@ -1,7 +1,12 @@
+const dotenv = require('dotenv');
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const simpleGit = require('simple-git')();
+const simpleGitPromise = require('simple-git/promise')();
 const path = require('path');
 const { urls } = require('./paths')
+
+dotenv.config();
 
 puppeteer
   .launch()
@@ -73,7 +78,59 @@ puppeteer
     await browser.close();
     console.log('*browser closed*');
     console.timeEnd('pagefetch');
+
+    // Only automate the git commit during a production process.
+    if (process.env.NODE_ENV === 'production') {
+      handleGitCommit();
+    }
   })
   .catch(function(err) {
     console.error(err);
   });
+
+function handleGitCommit(){
+  const GIT_REPO = 'sf-lwc-docs-diff';
+  const GIT_BRANCH = 'site-diffs';
+  const GIT_USERNAME = process.env.GIT_USERNAME;
+  const GIT_PASSWORD = process.env.GIT_PASSWORD;
+  const AUTHOR_NAME = process.env.npm_package_author_name;
+  const AUTHOR_EMAIL = process.env.npm_package_author_email;
+
+  const githubUrl = `https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/${GIT_REPO}`;
+  const commitMessage = `${generatePrettyDateTime()} - Diff found`;
+
+  // Add local git config
+  simpleGit.addConfig('user.email', AUTHOR_EMAIL);
+  simpleGit.addConfig('user.name', AUTHOR_NAME);
+
+  simpleGitPromise.addRemote('origin', githubUrl);
+
+  // Add all changed doc files for commit.
+  simpleGitPromise.add('.')
+    .then((addSuccess) => {
+      console.log('added files ', addSuccess);
+    }, (err) => {
+      console.log('adding files failed ', err);
+    });
+
+  // Commit files.
+  simpleGitPromise.commit(commitMessage)
+    .then((successCommit) => {
+      console.log('files successfully committed ', successCommit);
+    }, (err) => {
+      console.log('failed commmit ', err);
+    });
+
+  // Push to repo.
+  simpleGitPromise.push('origin', GIT_BRANCH)
+    .then((success) => {
+      console.log('repo successfully pushed ', success);
+    }, (err) => {
+      console.log('repo push failed ', err);
+    });
+}
+
+function generatePrettyDateTime(){
+  let date = new Date();
+  return date.toLocaleDateString(); // -> "2/1/2021"
+}
