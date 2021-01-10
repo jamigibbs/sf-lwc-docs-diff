@@ -24,11 +24,9 @@
     "url": "https://github.com/jamigibbs/sf-lwc-docs-diff/issues"
   },
   "homepage": "https://github.com/jamigibbs/sf-lwc-docs-diff#readme",
-  "devDependencies": {
+  "dependencies": {
+    "dotenv": "^8.2.0",
     "puppeteer": "^5.5.0",
     "simple-git": "^2.31.0"
-  },
-  "dependencies": {
-    "dotenv": "^8.2.0"
   }
 }
