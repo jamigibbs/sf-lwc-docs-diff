@@ -107,8 +107,6 @@ function handleGitCommit(){
 
   git.silent(true)
     .clone(githubUrl)
-    .addConfig('user.email', AUTHOR_EMAIL)
-    .addConfig('user.name', AUTHOR_NAME)
     .add('.')
     .commit(commitMessage)
     .push('origin', 'main')
