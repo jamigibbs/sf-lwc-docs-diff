@@ -105,44 +105,43 @@ function handleGitCommit(){
   git.addConfig('user.email', AUTHOR_EMAIL);
   git.addConfig('user.name', AUTHOR_NAME);
 
-  git.init(onInit).addRemote('origin', githubUrl, () => {
+  git.init(onInit).addRemote('origin', githubUrl).fetch();
 
-    // clone into a new directory
-    simpleGitPromise.clone(repoUrl, './temp/common');
-    // change to that directory
-    simpleGitPromise.cwd('./temp/common');
+    // // clone into a new directory
+    // simpleGitPromise.clone(repoUrl, './temp/common');
+    // // change to that directory
+    // simpleGitPromise.cwd('./temp/common');
 
-    simpleGitPromise.checkout(GIT_BRANCH)
-      .then((success) => {
-        console.log(`checked out ${GIT_BRANCH} `, success);
-      }, (err) => {
-        console.log('checkout branch error ', err);
-      });
+  simpleGitPromise.checkout(GIT_BRANCH)
+    .then((success) => {
+      console.log(`checked out ${GIT_BRANCH} `, success);
+    }, (err) => {
+      console.log('checkout branch error ', err);
+    });
 
-      // Add all changed doc files for commit.
-    simpleGitPromise.add('.')
-      .then((success) => {
-        console.log('added files ', success);
-      }, (err) => {
-        console.log('adding files failed ', err);
-      });
+    // Add all changed doc files for commit.
+  simpleGitPromise.add('.')
+    .then((success) => {
+      console.log('added files ', success);
+    }, (err) => {
+      console.log('adding files failed ', err);
+    });
 
-    // Commit files.
-    simpleGitPromise.commit(commitMessage)
-      .then((success) => {
-        console.log('files successfully committed ', success);
-      }, (err) => {
-        console.log('failed commmit ', err);
-      });
+  // Commit files.
+  simpleGitPromise.commit(commitMessage)
+    .then((success) => {
+      console.log('files successfully committed ', success);
+    }, (err) => {
+      console.log('failed commmit ', err);
+    });
 
-    // Push to repo.
-    simpleGitPromise.push('origin', GIT_BRANCH)
-      .then((success) => {
-        console.log('repo successfully pushed ', success);
-      }, (err) => {
-        console.log('repo push failed ', err);
-      });
-  });
+  // Push to repo.
+  simpleGitPromise.push('origin', GIT_BRANCH)
+    .then((success) => {
+      console.log('repo successfully pushed ', success);
+    }, (err) => {
+      console.log('repo push failed ', err);
+    });
 }
 
 function generatePrettyDateTime(){
