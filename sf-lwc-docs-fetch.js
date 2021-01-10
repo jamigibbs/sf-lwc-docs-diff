@@ -110,10 +110,9 @@ function handleGitCommit(){
     .addConfig('user.name', AUTHOR_NAME)
     .addRemote('origin', githubUrl)
     .fetch()
-    .checkout(GIT_DIFF_BRANCH)
     .add('.')
     .commit(commitMessage)
-    .push('origin', GIT_DIFF_BRANCH)
+    .push('origin', 'main')
     .catch(handleGitCatch)
 }
 
