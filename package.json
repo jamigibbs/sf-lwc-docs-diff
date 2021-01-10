@@ -9,8 +9,7 @@
   "main": "sf-lwc-docs-fetch.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node sf-lwc-docs-fetch.js",
-    "worker": "node sf-lwc-docs-fetch.js"
+    "start": "node sf-lwc-docs-fetch.js"
   },
   "repository": {
     "type": "git",
