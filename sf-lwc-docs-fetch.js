@@ -9,7 +9,7 @@ puppeteer
     console.time('pagefetch');
 
     const page = await browser.newPage();
-    console.log('*doc page browser open*');
+    console.log('*browser open*');
 
     for ( let i = 0; i < urls.length; i++) {
       const docsUrl = urls[i].docs;
@@ -24,17 +24,23 @@ puppeteer
       await page.goto(docsUrl);
       await promiseDocs;
 
-      console.log(`got to the ${urls[i].name} docs page`);
-
-      const docsHtml = await page.evaluate(() => document.querySelector('#documentation').innerHTML);
-      console.log(`got the ${urls[i].name} docs page html`);
-
-      const docFileName = 'docs.html'
-
-      fs.writeFile(`${baseDir}${docFileName}`, docsHtml, 'utf8', function (err) {
-        if (err) throw err;
-        console.log(`wrote the ${urls[i].name} doc file`);
+      const docsHtml = await page.evaluate(() => {
+        const el = document.querySelector('#documentation');
+        if (el) {
+          return el.innerHTML
+        } else {
+          console.log(`${i} - unable to locate ${urls[i].name} docs element`);
+          return null;
+        }
       });
+
+      if (docsHtml) {
+        const docFileName = 'docs.html';
+        fs.writeFile(`${baseDir}${docFileName}`, docsHtml, 'utf8', function (err) {
+          if (err) throw err;
+          console.log(`${i} - ${urls[i].name} docs done`);
+        });
+      }
 
       /**
        * Get specs html.
@@ -45,22 +51,27 @@ puppeteer
       await page.goto(specsUrl);
       await promiseSpecs;
 
-      console.log(`got to the ${urls[i].name} specs page`);
-
-      const specsHtml = await page.evaluate(() => document.querySelector('#specification').innerHTML);
-      console.log(`got the ${urls[i].name} specs page html`);
-
-      const specsFileName = 'specs.html'
-
-      fs.writeFile(`${baseDir}${specsFileName}`, specsHtml, 'utf8', function (err) {
-        if (err) throw err;
-        console.log(`wrote the ${urls[i].name} specs file`);
+      const specsHtml = await page.evaluate(() => {
+        const el = document.querySelector('#specification');
+        if (el) {
+          return el.innerHTML;
+        } else {
+          console.log(`${i} - unable to locate ${urls[i].name} specs element`);
+          return null;
+        }
       });
+
+      if (specsHtml) {
+        const specsFileName = 'specs.html'
+        fs.writeFile(`${baseDir}${specsFileName}`, specsHtml, 'utf8', function (err) {
+          if (err) throw err;
+          console.log(`${i} - ${urls[i].name} specs done`);
+        });
+      }
     }
 
     await browser.close();
-
-    console.log('*doc page browser closed*');
+    console.log('*browser closed*');
     console.timeEnd('pagefetch');
   })
   .catch(function(err) {
