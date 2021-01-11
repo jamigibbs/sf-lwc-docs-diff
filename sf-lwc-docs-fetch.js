@@ -23,7 +23,8 @@ if (process.env.NODE_ENV === 'production') {
     .addRemote('origin', githubUrl, onRemoteAdd)
     .addConfig('user.email', AUTHOR_EMAIL)
     .addConfig('user.name', AUTHOR_NAME)
-    .checkoutLocalBranch('main');
+    .checkoutLocalBranch(GIT_DIFF_BRANCH)
+    .catch(handleGitCatch);
 }
 
 puppeteer
@@ -113,7 +114,7 @@ function handleGitCommit(){
   // git.addConfig('user.email', AUTHOR_EMAIL);
   // git.addConfig('user.name', AUTHOR_NAME);
 
-  git.add('*')
+  git.add('.')
     .commit(commitMessage)
     .push('origin', 'main')
     .catch(handleGitCatch)
