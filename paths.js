@@ -10,6 +10,326 @@ const urls = [{
   name: 'lightning-accordion-section',
   docs: `${baseUrl}/lightning-accordion-section/documentation`,
   specs: `${baseUrl}/lightning-accordion-section/specification`
+}, {
+  name: 'lightning-avatar',
+  docs: `${baseUrl}/lightning-avatar/documentation`,
+  specs: `${baseUrl}/lightning-avatar/specification`
+}, {
+  name: 'lightning-badge',
+  docs: `${baseUrl}/lightning-badge/documentation`,
+  specs: `${baseUrl}/lightning-badge/specification`
+}, {
+  name: 'lightning-breadcrumb',
+  docs: `${baseUrl}/lightning-breadcrumb/documentation`,
+  specs: `${baseUrl}/lightning-breadcrumb/specification`
+}, {
+  name: 'lightning-breadcrumbs',
+  docs: `${baseUrl}/lightning-breadcrumbs/documentation`,
+  specs: `${baseUrl}/lightning-breadcrumbs/specification`
+}, {
+  name: 'lightning-button',
+  docs: `${baseUrl}/lightning-button/documentation`,
+  specs: `${baseUrl}/lightning-button/specification`
+}, {
+  name: 'lightning-button-group',
+  docs: `${baseUrl}/lightning-button-group/documentation`,
+  specs: `${baseUrl}/lightning-button-group/specification`
+}, {
+  name: 'lightning-button-icon',
+  docs: `${baseUrl}/lightning-button-icon/documentation`,
+  specs: `${baseUrl}/lightning-button-icon/specification`
+}, {
+  name: 'lightning-button-icon-stateful',
+  docs: `${baseUrl}/lightning-button-icon-stateful/documentation`,
+  specs: `${baseUrl}/lightning-button-icon-stateful/specification`
+}, {
+  name: 'lightning-button-menu',
+  docs: `${baseUrl}/lightning-button-menu/documentation`,
+  specs: `${baseUrl}/lightning-button-menu/specification`
+}, {
+  name: 'lightning-button-stateful',
+  docs: `${baseUrl}/lightning-button-stateful/documentation`,
+  specs: `${baseUrl}/lightning-button-stateful/specification`
+}, {
+  name: 'lightning-card',
+  docs: `${baseUrl}/lightning-card/documentation`,
+  specs: `${baseUrl}/lightning-card/specification`
+}, {
+  name: 'lightning-carousel',
+  docs: `${baseUrl}/lightning-carousel/documentation`,
+  specs: `${baseUrl}/lightning-carousel/specification`
+}, {
+  name: 'lightning-carousel-image',
+  docs: `${baseUrl}/lightning-carousel-image/documentation`,
+  specs: `${baseUrl}/lightning-carousel-image/specification`
+}, {
+  name: 'lightning-checkbox-group',
+  docs: `${baseUrl}/lightning-checkbox-group/documentation`,
+  specs: `${baseUrl}/lightning-checkbox-group/specification`
+}, {
+  name: 'lightning-click-to-dial',
+  docs: `${baseUrl}/lightning-click-to-dial/documentation`,
+  specs: `${baseUrl}/lightning-click-to-dial/specification`
+}, {
+  name: 'lightning-combobox',
+  docs: `${baseUrl}/lightning-combobox/documentation`,
+  specs: `${baseUrl}/lightning-combobox/specification`
+}, {
+  name: 'lightning-datatable',
+  docs: `${baseUrl}/lightning-datatable/documentation`,
+  specs: `${baseUrl}/lightning-datatable/specification`
+}, {
+  name: 'lightning-dual-listbox',
+  docs: `${baseUrl}/lightning-dual-listbox/documentation`,
+  specs: `${baseUrl}/lightning-dual-listbox/specification`
+}, {
+  name: 'lightning-dynamic-icon',
+  docs: `${baseUrl}/lightning-dynamic-icon/documentation`,
+  specs: `${baseUrl}/lightning-dynamic-icon/specification`
+}, {
+  name: 'lightning-emp-api',
+  docs: `${baseUrl}/lightning-emp-api/documentation`,
+  specs: `${baseUrl}/lightning-emp-api/specification`
+}, {
+  name: 'lightning-file-upload',
+  docs: `${baseUrl}/lightning-file-upload/documentation`,
+  specs: `${baseUrl}/lightning-file-upload/specification`
+}, {
+  name: 'lightning-flow-support',
+  docs: `${baseUrl}/lightning-flow-support/documentation`,
+  specs: `${baseUrl}/lightning-flow-support/specification`
+}, {
+  name: 'lightning-formatted-address',
+  docs: `${baseUrl}/lightning-formatted-address/documentation`,
+  specs: `${baseUrl}/lightning-formatted-address/specification`
+}, {
+  name: 'lightning-formatted-date-time',
+  docs: `${baseUrl}/lightning-formatted-date-time/documentation`,
+  specs: `${baseUrl}/lightning-formatted-date-time/specification`
+}, {
+  name: 'lightning-formatted-email',
+  docs: `${baseUrl}/lightning-formatted-email/documentation`,
+  specs: `${baseUrl}/lightning-formatted-email/specification`
+}, {
+  name: 'lightning-formatted-location',
+  docs: `${baseUrl}/lightning-formatted-location/documentation`,
+  specs: `${baseUrl}/lightning-formatted-location/specification`
+}, {
+  name: 'lightning-formatted-name',
+  docs: `${baseUrl}/lightning-formatted-name/documentation`,
+  specs: `${baseUrl}/lightning-formatted-name/specification`
+}, {
+  name: 'lightning-formatted-number',
+  docs: `${baseUrl}/lightning-formatted-number/documentation`,
+  specs: `${baseUrl}/lightning-formatted-number/specification`
+}, {
+  name: 'lightning-formatted-phone',
+  docs: `${baseUrl}/lightning-formatted-phone/documentation`,
+  specs: `${baseUrl}/lightning-formatted-phone/specification`
+}, {
+  name: 'lightning-formatted-rich-text',
+  docs: `${baseUrl}/lightning-formatted-rich-text/documentation`,
+  specs: `${baseUrl}/lightning-formatted-rich-text/specification`
+}, {
+  name: 'lightning-formatted-text',
+  docs: `${baseUrl}/lightning-formatted-text/documentation`,
+  specs: `${baseUrl}/lightning-formatted-text/specification`
+}, {
+  name: 'lightning-formatted-time',
+  docs: `${baseUrl}/lightning-formatted-time/documentation`,
+  specs: `${baseUrl}/lightning-formatted-time/specification`
+}, {
+  name: 'lightning-formatted-url',
+  docs: `${baseUrl}/lightning-formatted-url/documentation`,
+  specs: `${baseUrl}/lightning-formatted-url/specification`
+}, {
+  name: 'lightning-helptext',
+  docs: `${baseUrl}/lightning-helptext/documentation`,
+  specs: `${baseUrl}/lightning-helptext/specification`
+}, {
+  name: 'lightning-icon',
+  docs: `${baseUrl}/lightning-icon/documentation`,
+  specs: `${baseUrl}/lightning-icon/specification`
+}, {
+  name: 'lightning-input',
+  docs: `${baseUrl}/lightning-input/documentation`,
+  specs: `${baseUrl}/lightning-input/specification`
+}, {
+  name: 'lightning-input-address',
+  docs: `${baseUrl}/lightning-input-address/documentation`,
+  specs: `${baseUrl}/lightning-input-address/specification`
+}, {
+  name: 'lightning-input-field',
+  docs: `${baseUrl}/lightning-input-field/documentation`,
+  specs: `${baseUrl}/lightning-input-field/specification`
+}, {
+  name: 'lightning-input-location',
+  docs: `${baseUrl}/lightning-input-location/documentation`,
+  specs: `${baseUrl}/lightning-input-location/specification`
+}, {
+  name: 'lightning-input-name',
+  docs: `${baseUrl}/lightning-input-name/documentation`,
+  specs: `${baseUrl}/lightning-input-name/specification`
+}, {
+  name: 'lightning-input-rich-text',
+  docs: `${baseUrl}/lightning-input-rich-text/documentation`,
+  specs: `${baseUrl}/lightning-input-rich-text/specification`
+}, {
+  name: 'lightning-layout',
+  docs: `${baseUrl}/lightning-layout/documentation`,
+  specs: `${baseUrl}/lightning-layout/specification`
+}, {
+  name: 'lightning-layout-item',
+  docs: `${baseUrl}/lightning-layout-item/documentation`,
+  specs: `${baseUrl}/lightning-layout-item/specification`
+}, {
+  name: 'lightning-map',
+  docs: `${baseUrl}/lightning-map/documentation`,
+  specs: `${baseUrl}/lightning-map/specification`
+}, {
+  name: 'lightning-menu-item',
+  docs: `${baseUrl}/lightning-menu-item/documentation`,
+  specs: `${baseUrl}/lightning-menu-item/specification`
+}, {
+  name: 'lightning-message-service',
+  docs: `${baseUrl}/lightning-message-service/documentation`,
+  specs: `${baseUrl}/lightning-message-service/specification`
+}, {
+  name: 'lightning-navigation',
+  docs: `${baseUrl}/lightning-navigation/documentation`,
+  specs: `${baseUrl}/lightning-navigation/specification`
+}, {
+  name: 'lightning-output-field',
+  docs: `${baseUrl}/lightning-output-field/documentation`,
+  specs: `${baseUrl}/lightning-output-field/specification`
+}, {
+  name: 'lightning-page-reference-utils',
+  docs: `${baseUrl}/lightning-page-reference-utils/documentation`,
+  specs: `${baseUrl}/lightning-page-reference-utils/specification`
+}, {
+  name: 'lightning-pill',
+  docs: `${baseUrl}/lightning-pill/documentation`,
+  specs: `${baseUrl}/lightning-pill/specification`
+}, {
+  name: 'lightning-pill-container',
+  docs: `${baseUrl}/lightning-pill-container/documentation`,
+  specs: `${baseUrl}/lightning-pill-container/specification`
+}, {
+  name: 'lightning-platform-resource-loader',
+  docs: `${baseUrl}/lightning-platform-resource-loader/documentation`,
+  specs: `${baseUrl}/lightning-platform-resource-loader/specification`
+}, {
+  name: 'lightning-platform-show-toast-event',
+  docs: `${baseUrl}/lightning-platform-show-toast-event/documentation`,
+  specs: `${baseUrl}/lightning-platform-show-toast-event/specification`
+}, {
+  name: 'lightning-progress-bar',
+  docs: `${baseUrl}/lightning-progress-bar/documentation`,
+  specs: `${baseUrl}/lightning-progress-bar/specification`
+}, {
+  name: 'lightning-progress-indicator',
+  docs: `${baseUrl}/lightning-progress-indicator/documentation`,
+  specs: `${baseUrl}/lightning-progress-indicator/specification`
+}, {
+  name: 'lightning-progress-ring',
+  docs: `${baseUrl}/lightning-progress-ring/documentation`,
+  specs: `${baseUrl}/lightning-progress-ring/specification`
+}, {
+  name: 'lightning-progress-step',
+  docs: `${baseUrl}/lightning-progress-step/documentation`,
+  specs: `${baseUrl}/lightning-progress-step/specification`
+}, {
+  name: 'lightning-radio-group',
+  docs: `${baseUrl}/lightning-radio-group/documentation`,
+  specs: `${baseUrl}/lightning-radio-group/specification`
+}, {
+  name: 'lightning-record-edit-form',
+  docs: `${baseUrl}/lightning-record-edit-form/documentation`,
+  specs: `${baseUrl}/lightning-record-edit-form/specification`
+}, {
+  name: 'lightning-record-form',
+  docs: `${baseUrl}/lightning-record-form/documentation`,
+  specs: `${baseUrl}/lightning-record-form/specification`
+}, {
+  name: 'lightning-record-view-form',
+  docs: `${baseUrl}/lightning-record-view-form/documentation`,
+  specs: `${baseUrl}/lightning-record-view-form/specification`
+}, {
+  name: 'lightning-relative-date-time',
+  docs: `${baseUrl}/lightning-relative-date-time/documentation`,
+  specs: `${baseUrl}/lightning-relative-date-time/specification`
+}, {
+  name: 'lightning-rich-text-toolbar-button',
+  docs: `${baseUrl}/lightning-rich-text-toolbar-button/documentation`,
+  specs: `${baseUrl}/lightning-rich-text-toolbar-button/specification`
+}, {
+  name: 'lightning-rich-text-toolbar-button-group',
+  docs: `${baseUrl}/lightning-rich-text-toolbar-button-group/documentation`,
+  specs: `${baseUrl}/lightning-rich-text-toolbar-button-group/specification`
+}, {
+  name: 'lightning-slider',
+  docs: `${baseUrl}/lightning-slider/documentation`,
+  specs: `${baseUrl}/lightning-slider/specification`
+}, {
+  name: 'lightning-spinner',
+  docs: `${baseUrl}/lightning-spinner/documentation`,
+  specs: `${baseUrl}/lightning-spinner/specification`
+}, {
+  name: 'lightning-tab',
+  docs: `${baseUrl}/lightning-tab/documentation`,
+  specs: `${baseUrl}/lightning-tab/specification`
+}, {
+  name: 'lightning-tabset',
+  docs: `${baseUrl}/lightning-tabset/documentation`,
+  specs: `${baseUrl}/lightning-tabset/specification`
+}, {
+  name: 'lightning-textarea',
+  docs: `${baseUrl}/lightning-textarea/documentation`,
+  specs: `${baseUrl}/lightning-textarea/specification`
+}, {
+  name: 'lightning-tile',
+  docs: `${baseUrl}/lightning-tile/documentation`,
+  specs: `${baseUrl}/lightning-tile/specification`
+}, {
+  name: 'lightning-tree',
+  docs: `${baseUrl}/lightning-tree/documentation`,
+  specs: `${baseUrl}/lightning-tree/specification`
+}, {
+  name: 'lightning-tree-grid',
+  docs: `${baseUrl}/lightning-tree-grid/documentation`,
+  specs: `${baseUrl}/lightning-tree-grid/specification`
+}, {
+  name: 'lightning-ui-apps-api',
+  docs: `${baseUrl}/lightning-ui-apps-api/documentation`,
+  specs: `${baseUrl}/lightning-ui-apps-api/specification`
+}, {
+  name: 'lightning-ui-list-api',
+  docs: `${baseUrl}/lightning-ui-list-api/documentation`,
+  specs: `${baseUrl}/lightning-ui-list-api/specification`
+}, {
+  name: 'lightning-ui-object-info-api',
+  docs: `${baseUrl}/lightning-ui-object-info-api/documentation`,
+  specs: `${baseUrl}/lightning-ui-object-info-api/specification`
+}, {
+  name: 'lightning-ui-record-api',
+  docs: `${baseUrl}/lightning-ui-record-api/documentation`,
+  specs: `${baseUrl}/lightning-ui-record-api/specification`
+}, {
+  name: 'lightning-vertical-navigation',
+  docs: `${baseUrl}/lightning-vertical-navigation/documentation`,
+  specs: `${baseUrl}/lightning-vertical-navigation/specification`
+}, {
+  name: 'lightning-vertical-navigation-item',
+  docs: `${baseUrl}/lightning-vertical-navigation-item/documentation`,
+  specs: `${baseUrl}/lightning-vertical-navigation-item/specification`
+}, {
+  name: 'lightning-vertical-navigation-item-badge',
+  docs: `${baseUrl}/lightning-vertical-navigation-item-badge/documentation`,
+  specs: `${baseUrl}/lightning-vertical-navigation-item-badge/specification`
+}, {
+  name: 'lightning-vertical-navigation-item-icon',
+  docs: `${baseUrl}/lightning-vertical-navigation-item-icon/documentation`,
+  specs: `${baseUrl}/lightning-vertical-navigation-item-icon/specification`
 }]
 
 module.exports = {
