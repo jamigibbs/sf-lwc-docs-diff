@@ -20,10 +20,11 @@ dotenv.config();
 
 if (process.env.NODE_ENV === 'production') {
   git.init()
-    .addRemote('origin', githubUrl, onRemoteAdd)
     .addConfig('user.email', AUTHOR_EMAIL)
     .addConfig('user.name', AUTHOR_NAME)
-    .checkoutLocalBranch(GIT_DIFF_BRANCH)
+    .addRemote('origin', githubUrl, onRemoteAdd)
+    .fetch(gitFetchCallback)
+    .checkout(`origin/${GIT_DIFF_BRANCH}`, ['-ft'])
     .catch(handleGitCatch);
 }
 
@@ -116,13 +117,18 @@ function handleGitCommit(){
 
   git.add('.')
     .commit(commitMessage)
-    .push('origin', 'main')
+    .push('origin', GIT_DIFF_BRANCH)
     .catch(handleGitCatch)
 }
 
 function generatePrettyDateTime(){
   let date = new Date();
   return date.toLocaleDateString(); // -> "2/1/2021"
+}
+
+function gitFetchCallback(err, result) {
+  if (err) console.log('gitFetchCallback err', err);
+  console.log('gitFetchCallback', result);
 }
 
 function onRemoteAdd (err, result) {
