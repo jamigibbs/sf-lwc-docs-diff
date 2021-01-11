@@ -7,21 +7,23 @@ const simpleGitPromise = require('simple-git/promise')();
 const path = require('path');
 const { urls } = require('./paths');
 
-const repoUrl = 'https://github.com/jamigibbs/sf-lwc-docs-diff';
-const githubUrl = `https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/${GIT_REPO}`;
 const GIT_REPO = 'sf-lwc-docs-diff';
 const GIT_DIFF_BRANCH = 'site-diffs';
 const GIT_USERNAME = process.env.GIT_USERNAME;
 const GIT_PASSWORD = process.env.GIT_PASSWORD;
 const AUTHOR_NAME = process.env.npm_package_author_name;
 const AUTHOR_EMAIL = process.env.npm_package_author_email;
+const repoUrl = 'https://github.com/jamigibbs/sf-lwc-docs-diff';
+const githubUrl = `https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/${GIT_REPO}`;
 
 dotenv.config();
 
-git.init()
-  .addRemote('origin', githubUrl, onRemoteAdd)
-  .addConfig('user.email', AUTHOR_EMAIL)
-  .addConfig('user.name', AUTHOR_NAME);
+if (process.env.NODE_ENV === 'production') {
+  git.init()
+    .addRemote('origin', githubUrl, onRemoteAdd)
+    .addConfig('user.email', AUTHOR_EMAIL)
+    .addConfig('user.name', AUTHOR_NAME);
+}
 
 puppeteer
   .launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
