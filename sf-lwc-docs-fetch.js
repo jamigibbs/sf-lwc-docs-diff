@@ -22,7 +22,8 @@ if (process.env.NODE_ENV === 'production') {
   git.init()
     .addRemote('origin', githubUrl, onRemoteAdd)
     .addConfig('user.email', AUTHOR_EMAIL)
-    .addConfig('user.name', AUTHOR_NAME);
+    .addConfig('user.name', AUTHOR_NAME)
+    .checkout('main');
 }
 
 puppeteer
