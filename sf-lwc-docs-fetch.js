@@ -22,9 +22,9 @@ if (process.env.NODE_ENV === 'production') {
   git.init()
     .addConfig('user.email', AUTHOR_EMAIL)
     .addConfig('user.name', AUTHOR_NAME)
-    .addRemote('origin', githubUrl, onRemoteAdd)
+    .addRemote('origin', githubUrl, gitAddRemoteCallback)
     .fetch(gitFetchCallback)
-    .checkout(`origin/${GIT_DIFF_BRANCH}`, ['-ft'])
+    .checkout(`origin/${GIT_DIFF_BRANCH}`, ['-ft'], gitCheckoutCallback)
     .catch(handleGitCatch);
 }
 
@@ -111,13 +111,9 @@ puppeteer
 function handleGitCommit(){
   const commitMessage = `${generatePrettyDateTime()} - Diff found`;
 
-  // Add local git config
-  // git.addConfig('user.email', AUTHOR_EMAIL);
-  // git.addConfig('user.name', AUTHOR_NAME);
-
   git.add('.')
-    .commit(commitMessage)
-    .push('origin', GIT_DIFF_BRANCH)
+    .commit(commitMessage, gitCommitCallback)
+    .push('origin', GIT_DIFF_BRANCH, gitPushCallback)
     .catch(handleGitCatch)
 }
 
@@ -131,9 +127,24 @@ function gitFetchCallback(err, result) {
   console.log('gitFetchCallback', result);
 }
 
-function onRemoteAdd (err, result) {
-  if (err) console.log('git onRemoteAdd', err);
-  console.log('git onRemoteAdd res', result);
+function gitPushCallback(err, result) {
+  if (err) console.log('gitPushCallback err', err);
+  console.log('gitPushCallback', result);
+}
+
+function gitCommitCallback(err, result) {
+  if (err) console.log('gitCommitCallback err', err);
+  console.log('gitCommitCallback', result);
+}
+
+function gitAddRemoteCallback (err, result) {
+  if (err) console.log('gitAddRemoteCallback', err);
+  console.log('gitAddRemoteCallback res', result);
+}
+
+function gitCheckoutCallback (err, result) {
+  if (err) console.log('gitCheckoutCallback', err);
+  console.log('gitCheckoutCallback res', result);
 }
 
 function handleGitCatch (err, result) {
