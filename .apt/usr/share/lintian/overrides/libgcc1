@@ -1,3 +1,0 @@
-libgcc1: package-name-doesnt-match-sonames
-libgcc1: shlibs-declares-dependency-on-other-package
-libgcc1: symbols-declares-dependency-on-other-package
