@@ -5,9 +5,23 @@ const simpleGit = require('simple-git');
 const git = simpleGit();
 const simpleGitPromise = require('simple-git/promise')();
 const path = require('path');
-const { urls } = require('./paths')
+const { urls } = require('./paths');
+
+const repoUrl = 'https://github.com/jamigibbs/sf-lwc-docs-diff';
+const githubUrl = `https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/${GIT_REPO}`;
+const GIT_REPO = 'sf-lwc-docs-diff';
+const GIT_DIFF_BRANCH = 'site-diffs';
+const GIT_USERNAME = process.env.GIT_USERNAME;
+const GIT_PASSWORD = process.env.GIT_PASSWORD;
+const AUTHOR_NAME = process.env.npm_package_author_name;
+const AUTHOR_EMAIL = process.env.npm_package_author_email;
 
 dotenv.config();
+
+git.init()
+  .addRemote('origin', githubUrl, onRemoteAdd)
+  .addConfig('user.email', AUTHOR_EMAIL)
+  .addConfig('user.name', AUTHOR_NAME);
 
 puppeteer
   .launch({args: ['--no-sandbox', '--disable-setuid-sandbox']})
@@ -90,24 +104,13 @@ puppeteer
   });
 
 function handleGitCommit(){
-  const GIT_REPO = 'sf-lwc-docs-diff';
-  const GIT_DIFF_BRANCH = 'site-diffs';
-  const GIT_USERNAME = process.env.GIT_USERNAME;
-  const GIT_PASSWORD = process.env.GIT_PASSWORD;
-  const AUTHOR_NAME = process.env.npm_package_author_name;
-  const AUTHOR_EMAIL = process.env.npm_package_author_email;
-
-  const repoUrl = 'https://github.com/jamigibbs/sf-lwc-docs-diff';
-  const githubUrl = `https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/${GIT_REPO}`;
   const commitMessage = `${generatePrettyDateTime()} - Diff found`;
 
   // Add local git config
   // git.addConfig('user.email', AUTHOR_EMAIL);
   // git.addConfig('user.name', AUTHOR_NAME);
 
-  git.silent(true)
-    .clone(githubUrl)
-    .add('.')
+  git.add('.')
     .commit(commitMessage)
     .push('origin', 'main')
     .catch(handleGitCatch)
@@ -118,9 +121,9 @@ function generatePrettyDateTime(){
   return date.toLocaleDateString(); // -> "2/1/2021"
 }
 
-function onInit (err, result) {
-  if (err) console.log('git catch', err);
-  console.log('git init res', result);
+function onRemoteAdd (err, result) {
+  if (err) console.log('git onRemoteAdd', err);
+  console.log('git onRemoteAdd res', result);
 }
 
 function handleGitCatch (err, result) {
