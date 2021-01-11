@@ -112,7 +112,7 @@ function handleGitCommit(){
   // git.addConfig('user.email', AUTHOR_EMAIL);
   // git.addConfig('user.name', AUTHOR_NAME);
 
-  git.add('.')
+  git.add('*')
     .commit(commitMessage)
     .push('origin', 'main')
     .catch(handleGitCatch)
