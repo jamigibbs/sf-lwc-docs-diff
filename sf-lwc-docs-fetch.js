@@ -23,8 +23,7 @@ if (process.env.NODE_ENV === 'production') {
     .addRemote('origin', githubUrl, onRemoteAdd)
     .addConfig('user.email', AUTHOR_EMAIL)
     .addConfig('user.name', AUTHOR_NAME)
-    .pull('origin', 'main', {'--no-rebase': null})
-    .checkoutBranch('main')
+    .checkoutLocalBranch('main');
 }
 
 puppeteer
