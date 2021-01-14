@@ -46,6 +46,8 @@ puppeteer
        */
       const promiseDocs = page.waitForNavigation({ waitUntil: 'networkidle2' });
 
+      if (!promiseDocs) continue;
+
       await page.goto(docsUrl);
       await promiseDocs;
 
@@ -72,6 +74,8 @@ puppeteer
        */
       const specsUrl = urls[i].specs;
       const promiseSpecs = page.waitForNavigation({ waitUntil: 'networkidle2' });
+
+      if (!promiseSpecs) continue;
 
       await page.goto(specsUrl);
       await promiseSpecs;
