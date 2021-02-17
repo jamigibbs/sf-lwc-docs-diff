@@ -46,19 +46,15 @@ puppeteer
        */
       const promiseDocs = page.waitForNavigation({ waitUntil: 'networkidle2' });
 
-      if (!promiseDocs) continue;
-
       await page.goto(docsUrl);
       await promiseDocs;
 
-      const docsHtml = await page.evaluate(() => {
+      const docsHtml = await page.evaluate(function(){
         const el = document.querySelector('#documentation');
         if (el) {
           return el.innerHTML
-        } else {
-          console.log(`${i} - unable to locate ${urls[i].name} docs element`);
-          return null;
         }
+        return null;
       });
 
       if (docsHtml) {
@@ -75,19 +71,15 @@ puppeteer
       const specsUrl = urls[i].specs;
       const promiseSpecs = page.waitForNavigation({ waitUntil: 'networkidle2' });
 
-      if (!promiseSpecs) continue;
-
       await page.goto(specsUrl);
       await promiseSpecs;
 
-      const specsHtml = await page.evaluate(() => {
+      const specsHtml = await page.evaluate(function() {
         const el = document.querySelector('#specification');
         if (el) {
           return el.innerHTML;
-        } else {
-          console.log(`${i} - unable to locate ${urls[i].name} specs element`);
-          return null;
         }
+        return null;
       });
 
       if (specsHtml) {
