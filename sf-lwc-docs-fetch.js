@@ -19,9 +19,9 @@ const githubUrl = `https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USER
 dotenv.config();
 
 if (process.env.NODE_ENV === 'production') {
-  git.addConfig('user.email', AUTHOR_EMAIL);
-  git.addConfig('user.name', AUTHOR_NAME);
   git.init()
+    .addConfig('user.email', AUTHOR_EMAIL)
+    .addConfig('user.name', AUTHOR_NAME)
     .addRemote('origin', githubUrl, gitAddRemoteCallback)
     .fetch(gitFetchCallback)
     .checkout(`origin/${GIT_DIFF_BRANCH}`, ['-ft'], gitCheckoutCallback)
