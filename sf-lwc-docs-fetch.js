@@ -25,7 +25,6 @@ if (process.env.NODE_ENV === 'production') {
     .addRemote('origin', githubUrl, gitAddRemoteCallback)
     .fetch(gitFetchCallback)
     .checkout(`origin/${GIT_DIFF_BRANCH}`, ['-ft'], gitCheckoutCallback)
-    .then(launchPuppeter())
     .catch(handleGitCatch);
 } else {
   launchPuppeter()
@@ -146,6 +145,7 @@ function gitAddRemoteCallback (err, result) {
 function gitCheckoutCallback (err, result) {
   if (err) console.log('gitCheckoutCallback', err);
   console.log('gitCheckoutCallback res', result);
+  launchPuppeter();
 }
 
 function handleGitCatch (err, result) {
