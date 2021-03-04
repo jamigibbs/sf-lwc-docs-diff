@@ -114,10 +114,11 @@
   </tr> 
  </tbody> 
 </table> 
-<p componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">event.detail.files</code> returns a list of uploaded files with the attributes <code componentreference-bundledoc_bundledoc="">name</code> and <code componentreference-bundledoc_bundledoc="">documentId</code>. If a guest user performed the file upload, the <code componentreference-bundledoc_bundledoc="">documentId</code> is not returned.</p> 
+<p componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">event.detail.files</code> returns a list of uploaded files with the attributes <code componentreference-bundledoc_bundledoc="">name</code> and <code componentreference-bundledoc_bundledoc="">documentId</code>. When a guest user uploads files, the returned list includes only the <code componentreference-bundledoc_bundledoc="">name</code> and <code componentreference-bundledoc_bundledoc="">ContentVersionId</code>.</p> 
 <ul componentreference-bundledoc_bundledoc=""> 
  <li componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">name</code>: The file name in the format <code componentreference-bundledoc_bundledoc="">filename.extension</code>, for example, account.jpg.</li> 
  <li componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">documentId</code>: The ContentDocument Id in the format <code componentreference-bundledoc_bundledoc="">069XXXXXXXXXXXX</code>.</li> 
+ <li componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">ContentVersionId</code>: The ContentVersion Id in the format <code componentreference-bundledoc_bundledoc="">068XXXXXXXXXXXX</code>.</li> 
 </ul> 
 <p componentreference-bundledoc_bundledoc="">The event properties are as follows.</p> 
 <table componentreference-bundledoc_bundledoc=""> 
