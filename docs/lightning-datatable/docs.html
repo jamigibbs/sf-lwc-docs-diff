@@ -4,7 +4,6 @@
 <ul componentreference-bundledoc_bundledoc=""> 
  <li componentreference-bundledoc_bundledoc="">Displaying and formatting of columns with appropriate data types</li> 
  <li componentreference-bundledoc_bundledoc="">Infinite scrolling of rows</li> 
- <li componentreference-bundledoc_bundledoc="">Virtualized rendering</li> 
  <li componentreference-bundledoc_bundledoc="">Inline editing for some data types</li> 
  <li componentreference-bundledoc_bundledoc="">Header actions</li> 
  <li componentreference-bundledoc_bundledoc="">Row-level actions</li> 
@@ -602,70 +601,6 @@
 <p componentreference-bundledoc_bundledoc="">While this example uses a fixed number to denote the total number of rows, you can also use the SOQL SELECT syntax with the <code componentreference-bundledoc_bundledoc="">COUNT()</code> function to return the number of rows in the object in your Apex controller. Then, set the result on the <code componentreference-bundledoc_bundledoc="">totalNumberOfRows</code> attribute during initialization.</p> 
 <pre componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">    SELECT COUNT(Id) FROM Contact
 </code></pre> 
-<h4 componentreference-bundledoc_bundledoc="">Virtualize Rendering</h4> 
-<p componentreference-bundledoc_bundledoc="">A virtualized datatable only renders the rows that are visible and a buffer of a few rows above and below them. This makes scrolling a lot smoother for datatables with more than 200 rows. This example shows how to enable virtualization for a datatable.</p> 
-<p componentreference-bundledoc_bundledoc="">In the JavaScript file of your component, create a <code componentreference-bundledoc_bundledoc="">renderConfig</code> object with the attribute <code componentreference-bundledoc_bundledoc="">virtualize</code> set to <code componentreference-bundledoc_bundledoc="">vertical</code>.</p> 
-<pre componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">import { LightningElement } from 'lwc';
-
-export default class DataTable extends LightningElement {
-    // set data
-    // set columns
-    renderConfig = {
-        virtualize: 'vertical',
-        // additional customization
-    };
-}
-</code></pre> 
-<p componentreference-bundledoc_bundledoc="">In your <code componentreference-bundledoc_bundledoc="">lightning-datatable</code> component file, set the <code componentreference-bundledoc_bundledoc="">render-config</code> attribute to the <code componentreference-bundledoc_bundledoc="">renderConfig</code> object you created. Set the component’s <code componentreference-bundledoc_bundledoc="">render-mode</code> attribute to <code componentreference-bundledoc_bundledoc="">role-based</code> and set the <code componentreference-bundledoc_bundledoc="">lightning-datatable</code> component’s parent container to an explicit height. This can be a pixel value, a percentage, or an inherited height.</p> 
-<pre componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">&lt;template&gt;
-    &lt;div style="height: 300px;"&gt;
-        &lt;lightning-datatable
-            key-field="id"
-            data={data}
-            columns={columns}
-            render-mode="role-based"
-            render-config={renderConfig}&gt;
-        &lt;/lightning-datatable&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
-</code></pre> 
-<p componentreference-bundledoc_bundledoc="">The <code componentreference-bundledoc_bundledoc="">render-config</code> attribute supports these properties.</p> 
-<table componentreference-bundledoc_bundledoc=""> 
- <thead componentreference-bundledoc_bundledoc=""> 
-  <tr componentreference-bundledoc_bundledoc=""> 
-   <th componentreference-bundledoc_bundledoc="">Property</th> 
-   <th componentreference-bundledoc_bundledoc="">Type</th> 
-   <th componentreference-bundledoc_bundledoc="">Default Value</th> 
-   <th componentreference-bundledoc_bundledoc="">Description</th> 
-  </tr> 
- </thead> 
- <tbody componentreference-bundledoc_bundledoc=""> 
-  <tr componentreference-bundledoc_bundledoc=""> 
-   <td componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">bufferSize</code></td> 
-   <td componentreference-bundledoc_bundledoc="">Number</td> 
-   <td componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">5</code></td> 
-   <td componentreference-bundledoc_bundledoc="">Sets the number of additional rows that the component renders before and after the rows displayed in the viewport.</td> 
-  </tr> 
-  <tr componentreference-bundledoc_bundledoc=""> 
-   <td componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">fixedHeight</code></td> 
-   <td componentreference-bundledoc_bundledoc="">Boolean</td> 
-   <td componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">false</code></td> 
-   <td componentreference-bundledoc_bundledoc="">Makes every row the same height to reduce the load time that's spent caching the height of each row separately. If column wrapping is also enabled, rows can be positioned improperly.</td> 
-  </tr> 
-  <tr componentreference-bundledoc_bundledoc=""> 
-   <td componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">rowHeight</code></td> 
-   <td componentreference-bundledoc_bundledoc="">Number</td> 
-   <td componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">30.5</code></td> 
-   <td componentreference-bundledoc_bundledoc="">Height in pixels of a table row with one line of text.</td> 
-  </tr> 
-  <tr componentreference-bundledoc_bundledoc=""> 
-   <td componentreference-bundledoc_bundledoc=""><code componentreference-bundledoc_bundledoc="">virtualize</code></td> 
-   <td componentreference-bundledoc_bundledoc="">String</td> 
-   <td componentreference-bundledoc_bundledoc="">Empty string</td> 
-   <td componentreference-bundledoc_bundledoc="">Enables virtualization when set to <code componentreference-bundledoc_bundledoc="">vertical</code>.</td> 
-  </tr> 
- </tbody> 
-</table> 
 <h4 componentreference-bundledoc_bundledoc="">Creating Header Actions</h4> 
 <p componentreference-bundledoc_bundledoc="">Header actions refer to tasks you can perform on a column of data, such as displaying only rows that meet a criteria provided by the column. You can perform actions on a column and handle them using the <code componentreference-bundledoc_bundledoc="">onheaderaction</code> event handler.</p> 
 <p componentreference-bundledoc_bundledoc="">Header actions are available in the dropdown menu in the column header. The default header actions available on each column are as follows. For more information, see <strong componentreference-bundledoc_bundledoc="">Text Wrapping and Clipping</strong>.</p> 
